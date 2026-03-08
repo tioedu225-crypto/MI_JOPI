@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Milene 🌻</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#fff8c6,#ffd54f);
+text-align:center;
+overflow-x:hidden;
+}
+
+/* TITULOS */
+
+h1{
+font-size:45px;
+color:#c9a000;
+margin-top:30px;
+}
+
+h2{
+color:#444;
+}
+
+/* PORTADA MUSICA */
+
+.album{
+width:250px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+cursor:pointer;
+transition:0.4s;
+}
+
+.album:hover{
+transform:scale(1.05);
+}
+
+/* BOTONES */
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:10px;
+background:#ffca28;
+font-size:18px;
+cursor:pointer;
+margin:15px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffb300;
+}
+
+/* CARTA */
+
+.carta{
+width:60%;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+display:none;
+animation:aparecer 1s;
+}
+
+/* GALERIA */
+
+.galeria{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
+background-image:url("https://www.transparenttextures.com/patterns/flowers.png");
+padding:40px;
+border-radius:20px;
+}
+
+.galeria img{
+width:300px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+transition:0.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.08);
+}
+
+/* GIRASOLES */
+
+.girasol{
+position:absolute;
+font-size:35px;
+animation:flotar 10s linear infinite;
+}
+
+/* CORAZONES */
+
+.corazon{
+position:absolute;
+font-size:20px;
+color:red;
+animation:subir 5s linear infinite;
+}
+
+/* ANIMACIONES */
+
+@keyframes flotar{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+@keyframes subir{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-200px);opacity:0;}
+}
+
+@keyframes aparecer{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌻 Feliz Día de la Mujer 🌻</h1>
+<h2>Para Mi Gorda 💛</h2>
+
+<p> 1.Presiona la portada :3 </p>
+
+<img src="album.jpg" class="album" onclick="playMusic()">
+
+<br>
+
+<button onclick="mostrarCarta()">2. Presiona y lee mi mensaje 💌</button>
+<button onclick="crearCorazones()"> 3. Presiona y mira lo que siento por ti ❤️</button>
+
+<br><br>
+
+<h2>Nuestros momentos juntos 💛</h2>
+
+<div class="galeria">
+
+<img src="FOTO1.jpeg">
+<img src="FOTO2.jpeg">
+
+</div>
+
+<br>
+
+<div class="carta" id="carta">
+
+<p>
+Amor, hoy en el Día de la Mujer quiero recordarte lo especial que eres.
+</p>
+
+<p>
+Se que no hemos conversado contigo pero es porque estoy preparando cositas para ti como este detalle. sabes que eres una mujer increíble, trabajadora y llena de amor.(Mi llorona)
+Así como en tu florería llenas de flores la vida de muchas personas,también llenas mi vida de felicidad. (esta frase me la paso chat gpt jaja)
+</p>
+
+<p>
+Tu sonrisa me recuerda lo afortunado que soy,
+y tu forma de ser y las ganas que tienes de sobresalir con la floreria me INSPIRA todos los días.
+</p>
+
+<p>
+Gracias por soportarme y por ser parte de mi vida.
+te amoooooo muchooooo muchooooooooooooooooooo
+</p>
+
+<p><b>Con cariño, tu Jopi💛</b></p>
+
+</div>
+
+<audio id="musica">
+<source src="aperture.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* REPRODUCIR MUSICA */
+
+function playMusic(){
+document.getElementById("musica").play();
+crearCorazones();
+}
+
+/* MOSTRAR CARTA */
+
+function mostrarCarta(){
+document.getElementById("carta").style.display="block";
+window.scrollTo({
+top:document.getElementById("carta").offsetTop,
+behavior:"smooth"
+});
+}
+
+/* CORAZONES */
+
+function crearCorazones(){
+
+for(let i=0;i<20;i++){
+
+let corazon=document.createElement("div");
+corazon.className="corazon";
+corazon.innerHTML="❤️";
+
+corazon.style.left=Math.random()*100+"%";
+corazon.style.top="80%";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{corazon.remove()},5000);
+
+}
+
+}
+
+/* GIRASOLES AUTOMATICOS */
+
+setInterval(()=>{
+
+let flor=document.createElement("div");
+flor.className="girasol";
+flor.innerHTML="🌻";
+
+flor.style.left=Math.random()*100+"%";
+
+document.body.appendChild(flor);
+
+setTimeout(()=>{flor.remove()},10000);
+
+},2000);
+
+</script>
+
+</body>
+</html>
